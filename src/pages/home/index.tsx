@@ -1,7 +1,8 @@
 import Carousel from "components/comman/carousel";
 import Header from "components/shared/header";
+import Projects from "pages/ourProjects";
 import OurServices from "pages/ourServices";
-import { useState } from "react";
+
 
 const Home = () => {
   // "./images/black-office.jpg",
@@ -13,7 +14,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="z-10">
+      <div className="sticky z-50">
         <Header />
       </div>
 
@@ -21,7 +22,7 @@ const Home = () => {
         <Carousel autoSlide={true}>
           {[
             ...slides.map((s) => (
-              <img src={s} className="object-fill h-full w-full rounded-md" />
+              <img src={s} className="object-fill h-full w-full rounded-md" alt={s}/>
             )),
             //   <video src={vid} autoPlay muted loop />,
           ]}
@@ -29,6 +30,7 @@ const Home = () => {
       </div>
 
       <div className=""><OurServices/></div>
+      <div className=""><Projects/></div>
     </>
   );
 };

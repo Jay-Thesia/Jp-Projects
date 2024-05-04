@@ -4,6 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        primary: "#142534",
+        secondary:"#d9b27f",
         foreground: "#f8f8f8",
         ocean: "#FF8933",
         // ocean: "#00a8bf",
@@ -14,7 +16,6 @@ module.exports = {
         grey2: "#717171",
         dark: "#323232",
         grayNew: "#2E475D",
-        primary: "#142534",
         orange: "#FF8933",
       },
       lineHeight: {
