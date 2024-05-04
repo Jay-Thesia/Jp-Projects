@@ -15,7 +15,7 @@ const Header = () => {
             <span className="sr-only">JP Projects</span>
             <img
               className="mb-4"
-              src="./images/JpLogo.png"
+              src="./images/logo/JpLogo.png"
               alt=""
             />
           </a>

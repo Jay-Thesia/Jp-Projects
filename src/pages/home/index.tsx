@@ -6,9 +6,9 @@ import { useState } from "react";
 const Home = () => {
   // "./images/black-office.jpg",
   const slides = [
-    "./images/class-meeting-room.jpg",
-    "./images/empty-desk.jpg",
-    "./images/blue-Sofa.jpg",
+    "./images/carousel/class-meeting-room.jpg",
+    "./images/carousel/empty-desk.jpg",
+    "./images/carousel/blue-Sofa.jpg",
   ];
 
   return (
