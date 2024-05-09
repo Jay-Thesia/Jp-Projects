@@ -22,12 +22,12 @@ const Testimonial = () => {
           <div className=" absolute font-800 text-shadow-xl text-transparent text-5xl sm:text-7xl md:text-8xl lg:text-9xl right-0 left-10 bottom-2 lg:bottom-1 " style={{ WebkitTextStroke: ".3px white" }}>FEEDBACK</div>
         </div>
         <Swiper
-          effect={'cards'}
-          modules={[Pagination, Navigation, Autoplay, EffectCards]}
+         
+          modules={[Pagination, Navigation, Autoplay]}
           spaceBetween={32}
           slidesPerView={1}
           loop={true}
-          centeredSlides={true}
+          // centeredSlides={true}
           pagination={{ clickable: true, el: ".swiper-pagination", }}
 
           autoplay={{ delay: 2000, disableOnInteraction: false }}
@@ -38,12 +38,13 @@ const Testimonial = () => {
               spaceBetween: 100,
             },
             768: {
-              slidesPerView: 1,
-              spaceBetween: 60,
+              slidesPerView: 2,
+              spaceBetween: 30,
             },
+           
             1024: {
               slidesPerView: 3,
-              spaceBetween: 30,
+              spaceBetween: 10,
             },
           }}
           style={{ marginTop: "10%" }}
@@ -65,7 +66,7 @@ const Testimonial = () => {
                   <span className="text-base font-semibold text-indigo-600">4.9</span>
                 </div>
                 <p
-                  className="text-base text-gray-600 leading-6  transition-all duration-500 pb-8 group-hover:text-gray-800 slide_active:text-gray-800">
+                  className="text-base text-gray-600 leading-6  transition-all duration-500 pb-8 group-hover:text-gray-800 slide_active:text-gray-800 text-ellipsis overflow-hidden max-h-32 min-h-32">
                   Pagedone has made it possible for me to stay on top of my portfolio and make
                   informed
                   decisions
@@ -96,7 +97,7 @@ const Testimonial = () => {
                   <span className="text-base font-semibold text-indigo-600">4.9</span>
                 </div>
                 <p
-                  className="text-base text-gray-600 leading-6  transition-all duration-500 pb-8 group-hover:text-gray-800 slide_active:text-gray-800">
+                  className="text-base text-primary leading-6  transition-all duration-500 pb-8 group-hover:text-gray-800 slide_active:text-gray-800  text-ellipsis overflow-hidden max-h-32 min-h-32">
                   Thanks to pagedone, I feel more informed and confident about my investment decisions
                   than
                   ever
@@ -116,7 +117,7 @@ const Testimonial = () => {
           </SwiperSlide>
           <SwiperSlide >
             <div
-              className=" flex justify-between flex-col  group bg-white border border-solid border-gray-300 rounded-xl w-full p-6 transition-all duration-500  mx-auto slide_active:border-indigo-600 hover:border-indigo-600 hover:shadow-sm">
+              className=" flex justify-between flex-col  group bg-white border border-solid border-gray-300 rounded-xl w-full p-6 transition-all duration-500  mx-auto slide_active:border-indigo-600 hover:border-indigo-600 hover:shadow-sm slide_inactive:blur-lg">
               <div className="">
                 <div className="flex items-center mb-7 gap-2 text-amber-500 transition-all duration-500  ">
                   <svg className="w-5 h-5" viewBox="0 0 18 17" fill="none"
@@ -128,7 +129,7 @@ const Testimonial = () => {
                   <span className="text-base font-semibold text-indigo-600">4.9</span>
                 </div>
                 <p
-                  className="text-base text-primary leading-6  transition-all duration-500  pb-8 group-hover:text-gray-800 slide_active:text-gray-800">
+                  className="text-base text-primary leading-6  transition-all duration-500  pb-8 group-hover:text-gray-800 slide_active:text-gray-800 text-ellipsis overflow-hidden max-h-32 min-h-32">
                   The customer service team at pagedone went above and beyond to help me resolve a
                   billing
                   issue. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam nobis repellat dolorem eligendi delectus asperiores, commodi, ipsum numquam aliquam, animi mollitia praesentium? Explicabo quo veniam fuga doloribus. Dolorem, quas officia.
