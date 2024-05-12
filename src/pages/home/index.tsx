@@ -1,5 +1,6 @@
 import Carousel from "components/comman/carousel";
 import Header from "components/shared/header";
+import ContactUs from "pages/contactUs";
 import Projects from "pages/ourProjects";
 import OurServices from "pages/ourServices";
 import Team from "pages/outTeam";
@@ -23,8 +24,8 @@ const Home = () => {
       <div className="relative md-h-screen sm-h-10">
         <Carousel autoSlide={true}>
           {[
-            ...slides.map((s) => (
-              <img src={s} className="object-fill h-full w-full rounded-md" alt={s}/>
+            ...slides.map((s,index) => (
+              <img src={s} className="object-fill h-full w-full rounded-md" alt={s} key={index}/>
             )),
             //   <video src={vid} autoPlay muted loop />,
           ]}
@@ -35,6 +36,7 @@ const Home = () => {
       <div className=""><Projects/></div>
       <div className=""><Testimonial/></div>
       <div className=""><Team/></div>
+      <div className=""><ContactUs/></div>
     </>
   );
 };

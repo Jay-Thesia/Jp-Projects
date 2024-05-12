@@ -13,11 +13,13 @@ const useScrollTriggeredCountUp = (
   const isCounting = useRef(false)
   const frameRate = 1000 / 60
   const totalFrames = Math.round(duration / frameRate)
+  const hasAnimated = useRef(false);
 
   const handleScroll = useCallback(
     ([entry]:any) => {
-      if (entry.isIntersecting && !isCounting.current) {
+      if (entry.isIntersecting && !isCounting.current && !hasAnimated.current) {
         isCounting.current = true
+        hasAnimated.current = true; 
         let frame = 0
 
         const counter = setInterval(() => {
@@ -30,10 +32,11 @@ const useScrollTriggeredCountUp = (
             isCounting.current = false
           }
         }, frameRate)
-      } else {
-        isCounting.current = false
-        setCount(0)
-      }
+      } 
+      // else {
+      //   isCounting.current = false
+      //   setCount(0)
+      // }
     },
     [end, frameRate, totalFrames]
   )

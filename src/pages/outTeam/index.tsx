@@ -1,13 +1,5 @@
 
-import React, { useRef } from 'react';
-import useScrollTriggeredCountUp from '../../hooks/useScrollTriggeredCountUp';
 const Team = () => {
-  //   const ref = useRef<HTMLDivElement>(null);
-  // const count = useScrollTriggeredCountUp(ref, 100); // 0 to 100 count-up
-
-  // return <div ref={ref}>{count}</div>;
-
-
   return (
     <div className="container mt-12 sm:mt-14 md:mt-20 lg:mt-28">
       <div className="relative text-4xl sm:text-5xl md:text-6xl lg:text-7xl z-10">
