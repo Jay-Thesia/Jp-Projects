@@ -1,4 +1,5 @@
 import Carousel from "components/comman/carousel";
+import Footer from "components/shared/footer";
 import Header from "components/shared/header";
 import ContactUs from "pages/contactUs";
 import Projects from "pages/ourProjects";
@@ -37,6 +38,7 @@ const Home = () => {
       <div className=""><Testimonial/></div>
       <div className=""><Team/></div>
       <div className=""><ContactUs/></div>
+      <div className=""><Footer/></div>
     </>
   );
 };

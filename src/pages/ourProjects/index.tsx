@@ -71,7 +71,7 @@ const Projects = () => {
                 </div>
 
                 <div
-                    className="relative w-2/5 m-0 overflow-hidden text-gray-700 bg-white rounded-r-none bg-clip-border rounded-xl shrink-0">
+                    className="relative w-2/5 m-0 overflow-hidden text-gray-700 bg-white rounded-l-none bg-clip-border rounded-xl shrink-0">
                     <img
                         src="/images/projects/project2.png"
                         alt="card" className="object-cover w-full h-full" />
