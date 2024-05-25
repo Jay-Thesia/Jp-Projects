@@ -19,8 +19,7 @@ const OurServices = () => {
                     </div>
                     {/* <h3 className="text-xl font-bold text-gray-900 mt-4 min-h-20 max-h-20 overflow-hidden">Construction services</h3> */}
                     <h3 className="text-xl font-bold text-gray-900 mt-4 ">Engineering techniques & implementation</h3>
-                    <p className="overflow-hidden h-36 text-gray-500 text-sm mt-2">Lorem ipsum dol
-                        libero id mauris malesuada tincidunt. dsjosifj oidsfjodf dosdifj odfosdfifdo fsdofdo Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, tempore ab dolore soluta explicabo possimus fugit qui suscipit porro totam ipsum cupiditate vel praesentium. Minima voluptate rerum harum accusamus itaque. dsofjdsi  dsofijs osdijfdsf sofidjs dfo odsifdsjfi dsofj sdfodjsf </p>
+                    <p className="overflow-hidden h-36 text-gray-500 text-sm mt-2">The world of construction rests on the strong shoulders of engineers. From soil analysis to material selection, their expertise is the invisible foundation of safe, enduring, and sustainable structures. Our work lifts the veil on these fascinating techniques. </p>
 
                     <div className="flex justify-center mt-4">
                         <button className="bg-primary text-secondary py-2 px-5 rounded-full font-bold hover:bg-gray-600">Read more</button>
@@ -35,8 +34,7 @@ const OurServices = () => {
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mt-4">Pre-construction services</h3>
 
-                    <p className="overflow-hidden h-36 text-gray-500 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
-                        ante justo. Integer euismod libero id mauris malesuada tincidunt. dsjosifj oidsfjodf dosdifj odfosdfifdo fsdofdo Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, tempore ab dolore soluta explicabo possimus fugit qui suscipit porro totam ipsum cupiditate vel praesentium. Minima voluptate rerum harum accusamus itaque.</p>
+                    <p className="overflow-hidden h-40 text-gray-500 text-sm mt-2">Before breaking ground, we ensure a smooth build with our pre-construction services.  We'll work with you to refine your vision, establish a realistic budget, identify potential challenges, and develop a collaborative roadmap for success. Our meticulous planning lays the foundation for a successful.</p>
 
                     <div className="flex justify-center mt-4">
                         <button className="bg-primary text-secondary py-2 px-5 rounded-full font-bold hover:bg-gray-600">Read more</button>
@@ -51,8 +49,7 @@ const OurServices = () => {
 
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mt-4 ">Construction services</h3>
-                    <p className="overflow-hidden h-36 text-gray-500 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
-                        ante justo. Integer euismod libero id mauris malesuada tincidunt. dsjosifj oidsfjodf dosdifj odfosdfifdo fsdofdo Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, tempore ab dolore soluta explicabo possimus fugit qui suscipit porro totam ipsum cupiditate vel praesentium. Minima voluptate rerum harum accusamus itaque.</p>
+                    <p className="overflow-hidden h-40 text-gray-500 text-sm mt-2">At JP Projects, construction services orchestrate your vision, from blueprint to brick. Our team of architects composes the design, engineers craft the structure, and skilled builders bring it to life. Together, they transform dreams into extraordinary realities, ensuring every note is perfectly placed for a harmonious creation. </p>
 
                     <div className="flex justify-center mt-4">
                         <button className="bg-primary text-secondary py-2 px-5 rounded-full font-bold hover:bg-gray-600">Read more</button>

@@ -1,6 +1,8 @@
 import Carousel from "components/comman/carousel";
 import Footer from "components/shared/footer";
 import Header from "components/shared/header";
+import { Certificate } from "crypto";
+import Certificates from "pages/certificates";
 import ContactUs from "pages/contactUs";
 import Projects from "pages/ourProjects";
 import OurServices from "pages/ourServices";
@@ -38,6 +40,7 @@ const Home = () => {
       <div className=""><Testimonial/></div>
       <div className=""><Team/></div>
       <div className=""><ContactUs/></div>
+      <div className=""><Certificates/></div>
       <div className=""><Footer/></div>
     </>
   );

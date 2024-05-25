@@ -1,82 +1,62 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootStateType } from '../store';
 
-import { RootState } from "redux-toolkit/store";
+export type AuthSliceType = {
+    user?: any;
+    isAuthenticated?: boolean;
+    activeRole?: string;
+  };
 
-export interface PortalInterface {
-  portal: string;
-}
+  const initialState: AuthSliceType = {
+    user: null,
+    isAuthenticated: false,
+    activeRole: '',
+  };
 
-export interface AuthInterface {
-  portal?: PortalInterface | null;
-  token?: string | null;
-  isSuperAdmin?: boolean | null;
-  isAuthenticated?: boolean;
-  isAuthInitialized?: boolean;
-}
-
-const initialState: AuthInterface = {
-  portal: null,
-  token: null,
-  isSuperAdmin: false,
-  isAuthenticated: false,
-  isAuthInitialized: false,
-};
-
-const authSlice = createSlice({
-  name: "auth",
-  initialState,
-  reducers: {
-    setLogoutData(state: AuthInterface) {
-      localStorage.removeItem("access_token");
-      state.isSuperAdmin = false;
-      state.token = null;
-      state.portal = null;
-      state.isAuthenticated = false;
-    },
-
-    setAccessToken(state: AuthInterface, action: PayloadAction<AuthInterface>) {
-      const { token } = action.payload;
-
-      if (token) {
-        localStorage.setItem("access_token", token);
-        state.token = action.payload.token;
-        state.isSuperAdmin = action.payload.isSuperAdmin;
-        state.isAuthenticated = true;
-      }
-    },
-    setAuthInitialized(state: AuthInterface) {
-      state.isAuthInitialized = true;
-    },
-    setCredentials(state: AuthInterface, action: PayloadAction<AuthInterface>) {
-      const { token } = action.payload;
-
-      if (token) {
-        localStorage.setItem("access_token", token);
-        state.token = action.payload.token;
-        state.isSuperAdmin = action.payload.isSuperAdmin;
-        state.portal = action.payload.portal;
-        state.isAuthenticated = true;
-      } else {
-        localStorage.removeItem("access_token");
-        state.token = null;
-        state.portal = null;
-        state.isSuperAdmin = false;
+const slice = createSlice({
+    name: 'auth',
+    initialState,
+    reducers: {
+      setAuthenticated(state: AuthSliceType, action: PayloadAction<AuthSliceType>) {
+        state.isAuthenticated = action.payload.isAuthenticated;
+      },
+      setUserData(state: AuthSliceType, action: PayloadAction<AuthSliceType>) {
+        state.user = action.payload.user;
+      },
+      
+      setCredentials(state: AuthSliceType, action: PayloadAction<AuthSliceType>) {
+        const { user } = action.payload;
+        if (user) {
+          state.user = action.payload.user;
+          state.isAuthenticated = true;
+        } else {
+          state.user = null;
+          state.isAuthenticated = false;
+        }
+      },
+     
+      setLogoutData(state: AuthSliceType) {
+        state.user = null;
         state.isAuthenticated = false;
-      }
+      },
     },
-  },
-});
+  });
 
-export const { reducer } = authSlice;
+  export const { reducer } = slice;
 
-export const getAuth = (state: RootState) => state.auth;
-export const getCurrentPortal = (state: RootState) => state.auth.portal;
+  export const {
+    setCredentials,
+    setLogoutData,
+    setAuthenticated,
+    setUserData,
+    
+  } = slice.actions;
 
-export const {
-  setLogoutData,
-  setAccessToken,
-  setCredentials,
-  setAuthInitialized,
-} = authSlice.actions;
+  export const getAuth = (state: RootStateType) => state.auth;
 
-export default authSlice;
+export const getIsAuthenticated = (state: RootStateType) =>
+  state.auth.isAuthenticated;
+
+export const getCurrentUser = (state: RootStateType) => state.auth.user;
+
+export default slice;

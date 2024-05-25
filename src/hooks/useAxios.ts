@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { useState } from "react";
-import { Axios } from "../axios/axios";
+import { Axios } from "../base-axios";
 
 export type apiResponseType = {
   data: any;
