@@ -77,11 +77,11 @@ export const useAxiosPost = (): [
 
       const response = await Axios.post(url, data, { ...config });
 
+
       setIsLoading(false);
       setIsSuccess(true);
 
-      // console.log(response);
-
+      
       return { data: response.data };
     } catch (error: any) {
       const typedError = error as apiResponseType;

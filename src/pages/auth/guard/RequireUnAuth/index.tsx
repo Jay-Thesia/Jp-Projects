@@ -1,7 +1,17 @@
 import React, { ReactNode } from "react";
+import { useSelector } from "react-redux";
+import { Navigate, useLocation } from "react-router-dom";
+import { getAuth } from "redux-toolkit/slices/authSlice";
 
 const RequiresUnAuth = ({ children }: { children: ReactNode }) => {
-  return <div>RequiresUnAuth</div>;
+  const { isAuthenticated } = useSelector(getAuth);
+
+  const location = useLocation();
+  if (isAuthenticated &&  location.pathname=="/login") {
+    return <Navigate to="/dashboard" />;
+  }
+
+  return children;
 };
 
 export default RequiresUnAuth;

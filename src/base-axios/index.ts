@@ -1,13 +1,12 @@
   // ** Packages **
   import { Store } from '@reduxjs/toolkit';
-  import axios, { AxiosRequestConfig } from 'axios';
+  import axios, { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios';
+import { REACT_APP_API_URL } from 'config';
 
   // ** Redux **
   import { setLogoutData } from 'redux-toolkit/slices/authSlice';
   import { setToast } from 'redux-toolkit/slices/toastSlice';
 
-  // ** Others **
-  import { REACT_APP_API_URL } from 'config';
   
   // import { clearToken } from 'redux-toolkit/slices/tokenSlice';
 
@@ -24,17 +23,24 @@
 
   export const setupAxios = (store: Store) => {
     // logic of set token in header
-    Axios.interceptors.request.use((request) => {
-      const authToken = store.getState().token?.token || null;
-      const language = store.getState().language?.language || null;
+    Axios.interceptors.request.use((req:InternalAxiosRequestConfig) => {
+     
+      const loginToken = localStorage.getItem("access_token");
 
-      if (request.headers !== undefined && authToken) {
-        request.headers.Authorization = `JWT ${authToken}`;
+      if (req.headers !== undefined) {
+        if (typeof req?.data === "object") {
+          req.headers["Content-Type"] = "application/json";
+        } else {
+          req.headers["Content-Type"] = "multipart/form-data";
+        }
       }
-      
+  
+      if (req.headers && loginToken !== null) {
+        req.headers["Authorization"] = `Bearer ${loginToken}`;
+      }
 
-      request.withCredentials = true;
-      return request;
+      
+      return req;
     });
     // for toast message setup
     Axios.interceptors.response.use(

@@ -1,10 +1,13 @@
+import useAuthGuard from "hooks/userAuthGuard";
 import "./App.css";
 import CustomRouter from "./routing/Router";
+import SiteLoader from "components/comman/loader/SiteLoader";
 
 function App() {
   
+  const { isLoading, isAuthInitialized } = useAuthGuard();
   return (
-     <CustomRouter />
+    <>{isLoading || !isAuthInitialized ? <SiteLoader /> : <CustomRouter />}</>
   );
 }
 

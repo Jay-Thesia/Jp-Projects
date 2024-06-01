@@ -29,6 +29,7 @@ export const privateRoutes: Array<Route> = [
 /** PUBLIC ROUTES */
 export const publicRoutes: Array<Route> = [
   { key: "login_route", path: "/login", title: "Login", component: <Login /> },
+ 
   {
     key: "home_route",
     path: "/",

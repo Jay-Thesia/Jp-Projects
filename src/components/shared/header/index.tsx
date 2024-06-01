@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -65,9 +66,9 @@ const Header = () => {
           </a>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-white ">
+          <Link to="/login" className="text-sm font-semibold leading-6 text-white ">
             Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+          </Link>
         </div>
       </nav>
       {/* <!-- Mobile menu, show/hide based on menu open state. --> */}
