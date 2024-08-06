@@ -1,7 +1,7 @@
-import React, { SVGAttributes } from "react";
+import React, { SVGAttributes } from 'react';
 
 export interface ButtonProps extends SVGAttributes<SVGElement> {
-  type?: "button" | "submit" | "reset";
+  type?: 'button' | 'submit' | 'reset';
   children?: React.ReactNode;
   parentClassName?: string;
   className?: string;
@@ -44,34 +44,34 @@ const Button = (props: ButtonProps) => {
   } = props;
 
   const classes = `group outline-none inline-flex items-center gap-2.5 lg:gap-3 justify-center font-medium transition-all duration-300 leading-none rounded-full 
-  ${variant !== "blank" && (!smallBtn ? `h-14 text-lg ` : ` h-11 text-base`)} 
-  ${isScaleHover && "hover:scale-105"} 
+  ${variant !== 'blank' && (!smallBtn ? `h-14 text-lg ` : ` h-11 text-base`)} 
+  ${isScaleHover && 'hover:scale-105'} 
 
   ${
-    variant === "oceanFill"
-      ? "bg-gradient-to-r hover:bg-gradient-to-l from-ocean/75 to-ocean text-white transition-all"
-      : variant === "oceanBlank"
-      ? " bg-transparent text-ocean hover:text-grayNew"
-      : variant === "oceanOutline"
-      ? "border border-ocean bg-transparent hover:bg-ocean text-ocean hover:text-white"
-      : variant === "darkFill"
-      ? "bg-primary hover:bg-secondary text-white hover:text-black"
-      : variant === "darkBlank"
-      ? "bg-transparent text-grayNew hover:text-ocean"
-      : variant === "darkOutline"
-      ? "border border-grayNew bg-transparent hover:bg-grayNew text-grayNew hover:text-white"
-      : variant === "blank"
-      ? "bg-transparent text-grayNew hover:text-black"
-      : "bg-themeColor text-grayNew"
+    variant === 'oceanFill'
+      ? 'bg-gradient-to-r hover:bg-gradient-to-l from-ocean/75 to-ocean text-white transition-all'
+      : variant === 'oceanBlank'
+      ? ' bg-transparent text-ocean hover:text-grayNew'
+      : variant === 'oceanOutline'
+      ? 'border border-ocean bg-transparent hover:bg-ocean text-ocean hover:text-white'
+      : variant === 'darkFill'
+      ? 'bg-primary hover:bg-secondary text-white hover:text-black'
+      : variant === 'darkBlank'
+      ? 'bg-transparent text-grayNew hover:text-ocean'
+      : variant === 'darkOutline'
+      ? 'border border-grayNew bg-transparent hover:bg-grayNew text-grayNew hover:text-white'
+      : variant === 'blank'
+      ? 'bg-transparent text-grayNew hover:text-black'
+      : 'bg-themeColor text-grayNew'
   }
-  transition-all duration-300 rounded-8 p-5 ${className ? className : ""} ${
-    isDisabled || isLoading ? "cursor-not-allowed" : ""
+  transition-all duration-300 rounded-8 p-5 ${className ? className : ''} ${
+    isDisabled || isLoading ? 'cursor-not-allowed' : ''
   }
   
   `;
   return (
     <>
-      <div className={`${parentClassName ? parentClassName : ""}`}>
+      <div className={`${parentClassName ? parentClassName : ''}`}>
         <button
           onClick={(e) => {
             onHandleClick && onHandleClick(e);

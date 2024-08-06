@@ -5,6 +5,7 @@ import {
   getSortedRowModel,
   createColumnHelper,
 } from '@tanstack/react-table';
+import Header from 'components/shared/header';
 
 const AdminDashboard = () => {
   const columns = [
@@ -37,12 +38,12 @@ const AdminDashboard = () => {
     getSortedRowModel: getSortedRowModel(),
   });
   return (
-    <>
-      <div className="">
-        <table></table>
-      </div>
-      ;
-    </>
+    <div className="">
+      <Header isAdminView={true} />
+      <h1>Total Projects Added : {0}</h1>
+      <h1>Total Testimonials Added : {0}</h1>
+      <h1>Total Jobs Added : {0}</h1>
+    </div>
   );
 };
 

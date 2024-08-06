@@ -1,7 +1,7 @@
-import React, { ReactNode } from "react";
-import { useSelector } from "react-redux";
-import { Navigate, useLocation } from "react-router-dom";
-import { getAuth } from "redux-toolkit/slices/authSlice";
+import React, { ReactNode } from 'react';
+import { useSelector } from 'react-redux';
+import { Navigate, useLocation } from 'react-router-dom';
+import { getAuth } from 'redux-toolkit/slices/authSlice';
 
 const RequiresAuth = ({ children }: { children: ReactNode }) => {
   const { isAuthenticated } = useSelector(getAuth);
@@ -9,13 +9,12 @@ const RequiresAuth = ({ children }: { children: ReactNode }) => {
   const location = useLocation();
 
   /* Not Logged In */
-  if (!isAuthenticated&&location.pathname!=="/login") {
+  if (!isAuthenticated && location.pathname !== '/login') {
     return <Navigate to="/" />;
-  }else if(isAuthenticated && location.pathname!=="/login"){
-    return <Navigate to="/dashboard"/>
+  } else if (isAuthenticated && location.pathname !== '/login') {
+    return <Navigate to="/dashboard" />;
   }
 
- 
   return children;
 };
 

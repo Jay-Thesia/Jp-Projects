@@ -44,6 +44,7 @@ const Testimonial = () => {
         <div className="relative  text-4xl sm:text-5xl md:text-6xl lg:text-7xl z-10 top-4 sm:top-8 md:top-12 lg:top-16 text-white">
           <p className="">TESTIMONIALS</p>
           <div
+            id="clients"
             className=" absolute font-800 text-shadow-xl text-transparent text-5xl sm:text-7xl md:text-8xl lg:text-9xl right-0 left-10 bottom-2 lg:bottom-1 "
             style={{ WebkitTextStroke: '.3px white' }}
           >
