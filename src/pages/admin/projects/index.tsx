@@ -6,7 +6,7 @@ import Modal from 'components/shared/modal';
 import Button from 'components/comman/button';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, Controller } from 'react-hook-form';
-import { ProjectTypeInterface } from '../types';
+import { ProjectInterface } from '../types';
 import projectSchema from './validations/project.validation';
 import Input from 'components/comman/input';
 import ProjectModal from './components/projectModal';
@@ -24,7 +24,7 @@ const AdminProjects = () => {
   //   handleSubmit,
   //   reset,
   //   formState: { errors: EditErrors, isDirty },
-  // } = useForm<ProjectTypeInterface>({
+  // } = useForm<ProjectInterface>({
   //   resolver: yupResolver(projectSchema),
   //   defaultValues: {
   //     projectName: '',
@@ -106,53 +106,10 @@ const AdminProjects = () => {
       let { data: projectGet, error } = await getProjectAPI();
 
       if (error) {
-        console.log(`Error when fetching the projects`);
+        console.error(`Error when fetching the projects`);
+        return;
       }
 
-      projectGet = [
-        {
-          id: 1,
-          projectName: 'Dream Home',
-          projectType: 'Residential',
-          projectDescription:
-            'This stunning two-story home boasts spacious living areas and a luxurious master suite.',
-          projectLocation: '123 Main Street, Anytown, CA',
-          projectConstructionArea: 2500,
-          projectImages: [
-            'https://placeimg.com/640/480/arch',
-            'https://placeimg.com/640/480/arch?grayscale',
-            'https://placeimg.com/640/480/arch?sepia',
-          ],
-        },
-        {
-          id: 2,
-          projectName: 'Modern Office',
-          projectType: 'Commercial',
-          projectDescription:
-            'This sleek and modern office building is designed to foster collaboration and productivity.',
-          projectLocation: '456 Elm Street, Anytown, NY',
-          projectConstructionArea: 10000,
-          projectImages: [
-            'https://placeimg.com/640/480/tech',
-            'https://placeimg.com/640/480/tech?grayscale',
-            'https://placeimg.com/640/480/tech?sepia',
-          ],
-        },
-        {
-          id: 3,
-          projectName: 'Cozy Cabin',
-          projectType: 'Vacation Home',
-          projectDescription:
-            'This rustic cabin is the perfect getaway for a weekend escape in the woods.',
-          projectLocation: '789 Mountain View Drive, Anytown, WY',
-          projectConstructionArea: 800,
-          projectImages: [
-            'https://placeimg.com/640/480/nature',
-            'https://placeimg.com/640/480/nature?grayscale',
-            'https://placeimg.com/640/480/nature?sepia',
-          ],
-        },
-      ];
       setProjectData(projectGet);
     })();
   }, []);

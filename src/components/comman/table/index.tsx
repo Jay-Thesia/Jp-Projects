@@ -35,66 +35,82 @@ const Table = ({ columns, data }: { columns: any; data: any }) => {
               className="min-w-full divide-y divide-gray-200"
             >
               <thead className="bg-primary">
-                {headerGroups.map((headerGroup: any) => (
-                  <tr {...headerGroup.getHeaderGroupProps()}>
-                    {headerGroup.headers.map((column: any) => (
-                      // Add the sorting props to control sorting. For this example
-                      // we can add them into the header props
-                      <th
-                        scope="col"
-                        className="group px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
-                        {...column.getHeaderProps(
-                          column.getSortByToggleProps()
-                        )}
-                      >
-                        <div className="flex items-center justify-center">
-                          {column.render('Header')}
-                          {/* Add a sort direction indicator */}
-                          <span className="ml-2 ">
-                            {column.isSorted ? (
-                              column.isSortedDesc ? (
-                                <SortDownIcon className="w-4 h-4 text-gray-400" />
+                {headerGroups.map((headerGroup: any, index: number) => (
+                  <>
+                    <tr
+                      key={`header_${index}`}
+                      {...headerGroup.getHeaderGroupProps()}
+                    >
+                      {headerGroup.headers.map((column: any) => (
+                        // Add the sorting props to control sorting. For this example
+                        // we can add them into the header props
+                        <th
+                          key={column.id}
+                          scope="col"
+                          className="group px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
+                          {...column.getHeaderProps(
+                            column.getSortByToggleProps()
+                          )}
+                        >
+                          <div className="flex items-center justify-center">
+                            {column.render('Header')}
+                            {/* Add a sort direction indicator */}
+                            <span className="ml-2 ">
+                              {column.isSorted ? (
+                                column.isSortedDesc ? (
+                                  <SortDownIcon className="w-4 h-4 text-gray-400" />
+                                ) : (
+                                  <SortUpIcon className="w-4 h-4 text-gray-400" />
+                                )
                               ) : (
-                                <SortUpIcon className="w-4 h-4 text-gray-400" />
-                              )
-                            ) : (
-                              <SortIcon className="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100" />
-                            )}
-                          </span>
-                        </div>
-                      </th>
-                    ))}
-                  </tr>
+                                <SortIcon className="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100" />
+                              )}
+                            </span>
+                          </div>
+                        </th>
+                      ))}
+                    </tr>
+                  </>
                 ))}
               </thead>
-              <tbody {...getTableBodyProps()}>
-                {rows.map((row: any) => {
-                  prepareRow(row);
-                  return (
-                    <tr key={row.original.id} {...row.getRowProps()}>
-                      {row.cells.map((cell: any) => {
-                        return (
-                          <>
-                            {/* Here added onClick function to get cell value */}
-                            <td
-                              key={`${cell.column.Header} + '-' + ${cell.row.id}`}
-                              // onClick={() => getCellValue(cell)}
-                              {...cell.getCellProps()}
-                              style={{
-                                padding: '10px',
-                                border: 'solid 1px gray',
-                                // background: 'papayawhip',
-                              }}
-                            >
-                              {cell.render('Cell')}
-                            </td>
-                          </>
-                        );
-                      })}
-                    </tr>
-                  );
-                })}
-              </tbody>
+              {data.length > 0 ? (
+                <tbody {...getTableBodyProps()}>
+                  {rows.map((row: any) => {
+                    prepareRow(row);
+                    return (
+                      <tr key={row.original.id} {...row.getRowProps()}>
+                        {row.cells.map((cell: any) => {
+                          return (
+                            <>
+                              {/* Here added onClick function to get cell value */}
+                              <td
+                                key={`${cell.column.Header} + '-' + ${cell.row.id}`}
+                                // onClick={() => getCellValue(cell)}
+                                {...cell.getCellProps()}
+                                style={{
+                                  padding: '10px',
+                                  border: 'solid 1px gray',
+                                  // background: 'papayawhip',
+                                }}
+                              >
+                                {cell.render('Cell')}
+                              </td>
+                            </>
+                          );
+                        })}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              ) : (
+                <tbody>
+                  <tr>
+                    <td className="text-center  h-24" colSpan={7}>
+                      No Data Found!!
+                    </td>
+                  </tr>
+                </tbody>
+              )}
             </table>
           </div>
         </div>

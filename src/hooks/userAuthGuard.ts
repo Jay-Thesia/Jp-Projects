@@ -1,4 +1,3 @@
-import { log } from 'console';
 import { useGetLoggedInUserAPI } from 'pages/auth/services/auth.service';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,7 +25,6 @@ const useAuthGuard = () => {
   }, [isAuthenticated]);
 
   const loadUser = async () => {
-    console.log('ehrerr');
     if (isAuthenticated && location.pathname === '/login') {
       navigate('/dashboard');
     }
@@ -56,8 +54,6 @@ const useAuthGuard = () => {
     }
   };
 
-  console.log('isAuthenticated :>> ', isAuthenticated);
-  console.log(isLoading);
   return {
     isLoading,
     isAuthInitialized,

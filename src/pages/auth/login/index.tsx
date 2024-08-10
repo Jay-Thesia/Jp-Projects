@@ -32,9 +32,7 @@ const Login = () => {
 
       const { data, error } = await loginPostAPI(formData);
 
-      console.log('data :>> ', data);
       if (!error && data?.access_token) {
-        console.log('data.access_token :>> ', data.access_token);
         localStorage.setItem('access_token', data?.access_token);
         dispatch(setAccessToken({ token: data?.token, isSuperAdmin: true }));
         dispatch(
@@ -47,7 +45,7 @@ const Login = () => {
         return navigate('/');
       }
     } catch (error) {
-      console.log({ error });
+      console.error({ error });
       throw error;
     }
   });

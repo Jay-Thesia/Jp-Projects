@@ -1,6 +1,6 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-import { useState } from "react";
-import { Axios } from "../base-axios";
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { useState } from 'react';
+import { Axios } from '../base-axios';
 
 export type apiResponseType = {
   data: any;
@@ -38,7 +38,7 @@ export const useAxiosGet = (): [
       }
       setIsLoading(false);
       setIsSuccess(true);
-      return { data: response.data };
+      return { data: response.data, status: response.status };
     } catch (error: any) {
       const typedError = error as apiResponseType;
       setIsError(true);
@@ -77,12 +77,10 @@ export const useAxiosPost = (): [
 
       const response = await Axios.post(url, data, { ...config });
 
-
       setIsLoading(false);
       setIsSuccess(true);
 
-      
-      return { data: response.data };
+      return { data: response.data, status: response.status };
     } catch (error: any) {
       const typedError = error as apiResponseType;
       setIsError(true);
@@ -121,7 +119,7 @@ export const useAxiosPut = (): [
       const response = await Axios.put(url, data, { ...config });
       setIsLoading(false);
       setIsSuccess(true);
-      return { data: response.data };
+      return { data: response.data, status: response.status };
     } catch (error: any) {
       const typedError = error as apiResponseType;
       setIsError(true);
@@ -160,7 +158,7 @@ export const useAxiosPatch = (): [
       const response = await Axios.patch(url, data, { ...config });
       setIsLoading(false);
       setIsSuccess(true);
-      return { data: response.data };
+      return { data: response.data, status: response.status };
     } catch (error: any) {
       const typedError = error as apiResponseType;
       setIsError(true);
@@ -197,7 +195,7 @@ export const useAxiosDelete = (): [
       const response = await Axios.delete(url, { ...config });
       setIsLoading(false);
       setIsSuccess(true);
-      return { data: response.data };
+      return { data: response.data, status: response.status };
     } catch (error: any) {
       const typedError = error as apiResponseType;
       setIsError(true);

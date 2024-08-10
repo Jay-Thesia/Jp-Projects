@@ -1,8 +1,7 @@
-import { AxiosRequestConfig } from "axios";
-import { log } from "console";
-import { useAxiosGet, useAxiosPost } from "hooks/useAxios";
+import { AxiosRequestConfig } from 'axios';
+import { useAxiosGet, useAxiosPost } from 'hooks/useAxios';
 
-const AUTH_API_BASE_PATH = "/authorize";
+const AUTH_API_BASE_PATH = '/authorize';
 
 //  ** Get Logged User Details **
 export const useGetLoggedInUserAPI = () => {
@@ -13,13 +12,11 @@ export const useGetLoggedInUserAPI = () => {
     data: object,
     config: AxiosRequestConfig<object> = {}
   ) => {
-    return callApi(`${AUTH_API_BASE_PATH}/getLoggedIn`,data,config);
+    return callApi(`${AUTH_API_BASE_PATH}/getLoggedIn`, data, config);
   };
 
   return { getLoggedInUserAPI, isLoading, isError, isSuccess };
 };
-
-
 
 // ** post **
 //  ** Login User **
@@ -27,13 +24,11 @@ export const useLoginPostAPI = () => {
   const [callApi, { isLoading, isError, isSuccess }] = useAxiosPost();
 
   const loginPostAPI = async (
-    data: any,
+    data: Object,
     config: AxiosRequestConfig<object> = {}
   ) => {
-
     return await callApi(`${AUTH_API_BASE_PATH}/login`, data, config);
   };
 
   return { loginPostAPI, isLoading, isError, isSuccess };
 };
-

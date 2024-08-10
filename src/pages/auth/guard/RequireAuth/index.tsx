@@ -5,7 +5,6 @@ import { getAuth } from 'redux-toolkit/slices/authSlice';
 
 const RequiresAuth = ({ children }: { children: ReactNode }) => {
   const { isAuthenticated } = useSelector(getAuth);
-  console.log('isAuthenticated: ', isAuthenticated);
   const location = useLocation();
 
   /* Not Logged In */

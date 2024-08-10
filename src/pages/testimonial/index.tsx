@@ -11,6 +11,7 @@ import 'swiper/css';
 const Testimonial = () => {
   const testimonials = [
     {
+      id: 1,
       stars: 4.9,
       testimonial:
         'Pagedone has made it possible for me to stay on top of my portfolio and make informed decisions quickly and easily.',
@@ -20,6 +21,7 @@ const Testimonial = () => {
       companyName: 'Fortune Tech',
     },
     {
+      id: 2,
       stars: 4.9,
       testimonial:
         'Thanks to pagedone, I feel more informed and confident about my investment decisions than ever before.',
@@ -29,6 +31,7 @@ const Testimonial = () => {
       companyName: 'Vagarro Technology',
     },
     {
+      id: 3,
       stars: 4.9,
       testimonial:
         'The customer service team at pagedone went above and beyond to help me resolve a billing issue. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam nobis repellat dolorem eligendi delectus asperiores, commodi, ipsum numquam aliquam, animi mollitia praesentium? Explicabo quo veniam fuga doloribus. Dolorem, quas officia.',
@@ -78,7 +81,7 @@ const Testimonial = () => {
           style={{ marginTop: '10%' }}
         >
           {testimonials.map((currTestimonial) => (
-            <SwiperSlide>
+            <SwiperSlide key={currTestimonial.id}>
               <div className="group bg-white border border-solid border-primary w-full flex justify-between flex-col rounded-xl p-6 transition-all duration-500  mx-auto hover:border-indigo-600 hover:shadow-sm slide_active:border-indigo-600">
                 <div className="">
                   <div className="flex items-center mb-7 gap-2 text-amber-500 transition-all duration-500  ">

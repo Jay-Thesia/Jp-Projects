@@ -83,6 +83,7 @@ export type InputProps<TFormValues extends FieldValues> = {
   extraTextClass?: string;
   extraTextRight?: boolean;
   minNumber?: number;
+  rows?: number;
 };
 
 const Input = <TFormValues extends Record<string, unknown>>(
@@ -107,6 +108,7 @@ const Input = <TFormValues extends Record<string, unknown>>(
     extraTextRight,
     minNumber,
     variantBottomLine,
+    rows,
     ...rest
   } = fieldProps;
 
@@ -136,30 +138,44 @@ const Input = <TFormValues extends Record<string, unknown>>(
           ''
         )}
         <div className="relative">
-          <input
-            id={id ?? ''}
-            disabled={disabled ?? false}
-            type={
-              type === 'password'
-                ? passwordVisible
-                  ? 'text'
-                  : 'password'
-                : type
-            }
-            value={value}
-            className={`${
-              variant
-                ? ''
-                : `relative peer bg-transparent text-dark/80 transition-all placeholder:text-gray/70 placeholder:text-sm outline-none block text-base w-full pb-3 border-b-2 border-grey  ${className}`
-            }
+          {type == 'textarea' ? (
+            <textarea
+              id={id ?? ''}
+              disabled={disabled ?? false}
+              value={value}
+              className={`relative peer bg-transparent text-dark/80 transition-all placeholder:text-gray/70 placeholder:text-sm outline-none block text-base w-full pb-3 border-b-2 border-grey ${
+                className ?? ''
+              }`}
+              {...(register ? register(name) : '')}
+              rows={rows}
+              {...rest}
+            />
+          ) : (
+            <input
+              id={id ?? ''}
+              disabled={disabled ?? false}
+              type={
+                type === 'password'
+                  ? passwordVisible
+                    ? 'text'
+                    : 'password'
+                  : type
+              }
+              value={value}
+              className={`${
+                variant
+                  ? ''
+                  : `relative peer bg-transparent text-dark/80 transition-all placeholder:text-gray/70 placeholder:text-sm outline-none block text-base w-full pb-3 border-b-2 border-grey   ${className}`
+              }
             ${className ?? ''} ${type === 'password' ? 'pr-12' : ''} ${
-              extraTextRight ? 'pl-5' : ''
-            }`}
-            {...(register ? register(name) : '')}
-            min={minNumber}
-            {...rest}
-            maxLength={fieldLimit ?? 100}
-          />
+                extraTextRight ? 'pl-5' : ''
+              }`}
+              {...(register ? register(name) : '')}
+              min={minNumber}
+              {...rest}
+              maxLength={fieldLimit ?? 100}
+            />
+          )}
           <span
             className={`absolute peer-focus:scale-x-100 bottom-0 left-2/4 -translate-x-2/4 h-0.5 w-full ${
               variantBottomLine === 'ocean' ? 'bg-secondary' : 'bg-primary'

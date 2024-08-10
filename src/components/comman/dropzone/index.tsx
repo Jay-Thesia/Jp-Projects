@@ -1,4 +1,10 @@
-import React, { forwardRef, useCallback, useMemo, useState } from 'react';
+import React, {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { useDropzone } from 'react-dropzone';
 
 import {
@@ -9,8 +15,11 @@ import {
   FieldError,
   Control,
   FieldErrorsImpl,
+  UseFormSetError,
+  UseFormClearErrors,
 } from 'react-hook-form';
 import { FieldType } from '../input';
+import { ProjectInterface } from 'pages/admin/types';
 
 interface DropzonInterface<TFormValues extends FieldValues> {
   label: string;
@@ -20,7 +29,8 @@ interface DropzonInterface<TFormValues extends FieldValues> {
   error?:
     | Merge<FieldError, (FieldError | undefined)[]>
     | Merge<FieldError, (Merge<FieldError, FieldErrorsImpl> | undefined)[]>
-    | undefined;
+    | undefined
+    | any;
 
   setValue?: (value: string | undefined) => void;
   onChange?: (value: any) => void;
@@ -33,12 +43,17 @@ interface DropzonInterface<TFormValues extends FieldValues> {
   variantBottomLine?: 'dark' | 'ocean';
   variant?: boolean;
   labelClass?: string;
+  onDrop: (updatedFiles: { file: File; id: string }) => void;
+  selectedImages: any[];
+  onRemoveImage: any;
+  isEdit: boolean;
+  setError: UseFormSetError<ProjectInterface>;
+  clearError: UseFormClearErrors<ProjectInterface>;
 }
 
-const Dropzone = <TFormValues extends FieldValues>(
-  props: DropzonInterface<TFormValues>,
-  ref: React.Ref<HTMLInputElement>
-) => {
+function Dropzone<TFormValues extends FieldValues>(
+  props: DropzonInterface<TFormValues>
+) {
   const {
     id,
     label,
@@ -52,28 +67,41 @@ const Dropzone = <TFormValues extends FieldValues>(
     labelClass,
     variant,
     onChange,
+    onDrop,
+    selectedImages,
+    onRemoveImage,
+    isEdit,
+    setError,
+    clearError,
     ...rest
   } = props;
-  const [selectedImages, setSelectedImages] = useState<any[]>([]);
+
   const [uploadStatus, setUploadStatus] = useState('');
 
-  const onDrop: any = useCallback(
-    (acceptedFiles: File[], rejectedFiles: [string]) => {
-      setSelectedImages((prevState) => [
-        ...prevState,
-        ...acceptedFiles.map((file) => ({
-          file,
-          id: URL.createObjectURL(file),
-        })),
-      ]);
-      // Handle onChange from react-hook-form
-      if (onChange) onChange(acceptedFiles);
+  const onDropHandler: any = useCallback(
+    (acceptedFiles: File[], rejectedFiles: [{ [key: string]: any }]) => {
+      if (rejectedFiles.length > 0) {
+        setError('projectImages', {
+          type: 'manual',
+          message: rejectedFiles
+            .map((file) => file.errors.map((error: any) => error.message))
+            .flat()
+            .join(', '),
+        });
+      } else {
+        clearError('projectImages');
+      }
+
+      const newFiles: any = acceptedFiles.map((file) => ({
+        file,
+        id: URL.createObjectURL(file),
+      }));
+      onDrop(newFiles);
     },
-    [onChange]
+    [onDrop]
   );
 
-  const maxFileSize = 5 * 1024 * 1024; // 5 MB
-  const acceptedFiles = '.png,.jpg,.jpeg,.gif';
+  const maxFileSize = 2 * 1024 * 1024; // 2 MB
 
   const {
     getRootProps,
@@ -82,36 +110,43 @@ const Dropzone = <TFormValues extends FieldValues>(
     isDragAccept,
     isDragReject,
   } = useDropzone({
-    onDrop,
-    // accept: acceptedFiles,
+    onDrop: onDropHandler,
     maxFiles: 10, // Limit number of files
     maxSize: maxFileSize,
+    accept: {
+      'image/jpeg': [],
+      'image/png': [],
+      'image/jpg': [],
+      'image/webp': [],
+      'image/heic': [],
+      'image/jfif': [],
+    },
   });
 
-  const onUpload = async () => {
-    setUploadStatus('Uploading....');
-    const formData = new FormData();
-    selectedImages.forEach((image) => {
-      formData.append('file', image);
-    });
-    try {
-      //   const response = await axios.post(
-      //     'https://cloudinary-react-dropzone.vercel.app/api/upload',
-      //     formData
-      //   );
-      //   console.log(response.data);
-      setUploadStatus('upload successful');
-    } catch (error) {
-      console.log('imageUpload' + error);
-      setUploadStatus('Upload failed..');
-    }
-  };
+  // const onUpload = async () => {
+  //   setUploadStatus('Uploading....');
+  //   const formData = new FormData();
+  //   selectedImages?.forEach((image) => {
+  //     formData.append('file', image);
+  //   });
+  //   try {
+  //     //   const response = await axios.post(
+  //     //     'https://cloudinary-react-dropzone.vercel.app/api/upload',
+  //     //     formData
+  //     //   );
+  //     //   console.log(response.data);
+  //     setUploadStatus('upload successful');
+  //   } catch (error) {
+  //     console.log('imageUpload' + error);
+  //     setUploadStatus('Upload failed..');
+  //   }
+  // };
 
-  const removeImage = (id: any) => {
-    setSelectedImages((prevState) =>
-      prevState.filter((image: any) => image.id !== id)
-    );
-  };
+  // const removeImage = (id: any) => {
+  //   setSelectedImages((prevState) =>
+  //     prevState.filter((image: any) => image.id !== id)
+  //   );
+  // };
 
   const style = useMemo(
     () => ({
@@ -140,16 +175,8 @@ const Dropzone = <TFormValues extends FieldValues>(
           className="w-full h-40 mt-2 bg-gray-400 border-dashed border-2 border-black cursor-pointer flex justify-center items-center font-bold text-black"
           {...getRootProps({ style })}
         >
-          <input
-            id={id}
-            disabled={disabled ?? false}
-            {...getInputProps()}
-            // {...(register ? register(name) : {})}
-            value={value}
-            type={type ?? 'file'}
-            ref={ref}
-            {...rest}
-          />
+          <input disabled={disabled ?? false} {...getInputProps()} />{' '}
+          {/* {...rest} is not need check */}
           {isDragActive ? (
             <p>Drop file(s) here ...</p>
           ) : (
@@ -162,25 +189,25 @@ const Dropzone = <TFormValues extends FieldValues>(
               <div key={image.id} className="relative inline-block mr-4">
                 <img
                   className="w-12 h-12 border-dotted border-3 border-black"
-                  src={image.id}
+                  src={image.id.includes('blob') ? image.id : image.file}
                   alt=""
                 />
 
-                {/* <button
-                className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1 text-xs"
-                onClick={() => removeImage(image.id)}
-              >
-                X
-              </button> */}
+                <button
+                  className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1 text-xs"
+                  onClick={() => onRemoveImage(image.id)}
+                >
+                  X
+                </button>
               </div>
             ))}
         </div>
-        {selectedImages.length > 0 && (
+        {/* {selectedImages.length > 0 && (
           <div className="">
             <button onClick={onUpload}>Upload to Cloudinary</button>
             <p>{uploadStatus}</p>
           </div>
-        )}
+        )} */}
 
         {error && (
           <p className="text-base text-red-500 font-medium mt-1 inline-block">
@@ -190,6 +217,6 @@ const Dropzone = <TFormValues extends FieldValues>(
       </div>
     </>
   );
-};
+}
 
-export default forwardRef(Dropzone);
+export default Dropzone;

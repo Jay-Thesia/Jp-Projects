@@ -29,7 +29,7 @@ const ContactUs = () => {
               <p className="text-left sm:text-sm md:text-xl">
                 <span className="text-secondary text-xl md:text-2xl lg:text-3xl underline">
                   Let's Discuss Your Project!
-                </span>{' '}
+                </span>
                 We understand that every construction project is unique. Whether
                 you're building your dream home, renovating a commercial space,
                 or embarking on a large-scale development, our team of
@@ -119,14 +119,14 @@ const ContactUs = () => {
                 Projects
               </p>
               <p className="text-secondary font-bold text-3xl md:text-4xl lg:text-4xl">
-                <div ref={ref}>{projectCount}+</div>
+                <span ref={ref}>{projectCount}+</span>
               </p>
             </div>
 
             <div className="text-center p-4 text-primary">
               <p className=" font-bold text-lg md:text-xl lg:text-3xl">Staff</p>
               <p className="text-secondary font-bold text-3xl md:text-4xl lg:text-4xl">
-                <div ref={ref}>{staffCount}+</div>
+                <span ref={ref}>{staffCount}+</span>
               </p>
             </div>
 
@@ -135,7 +135,7 @@ const ContactUs = () => {
                 Machinery
               </p>
               <p className="text-secondary font-bold text-3xl md:text-4xl lg:text-4xl">
-                <div ref={ref}>{machineryCount}+</div>
+                <span ref={ref}>{machineryCount}+</span>
               </p>
             </div>
           </div>

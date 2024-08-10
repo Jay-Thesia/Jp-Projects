@@ -186,13 +186,13 @@ const Header = ({
                     className="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="1.5"
+                    strokeWidth="1.5"
                     stroke="currentColor"
                     aria-hidden="true"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M6 18L18 6M6 6l12 12"
                     />
                   </svg>
@@ -210,20 +210,20 @@ const Header = ({
                     </Link>
 
                     <Link
-                      to="dashbaord/projects"
+                      to="/dashboard/projects"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-900"
                     >
                       Projects
                     </Link>
                     <Link
-                      to="dashbaord/clients"
+                      to="/dashboard/clients"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-900"
                     >
                       Clients
                     </Link>
 
                     <Link
-                      to="dashbaord/career"
+                      to="/dashboard/career"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-900"
                     >
                       Career
@@ -257,13 +257,13 @@ const Header = ({
                     className="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="1.5"
+                    strokeWidth="1.5"
                     stroke="currentColor"
                     aria-hidden="true"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M6 18L18 6M6 6l12 12"
                     />
                   </svg>

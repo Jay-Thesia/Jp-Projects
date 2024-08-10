@@ -9,21 +9,16 @@ const projectSchema = yup.object({
     .number()
     .min(1, 'Project Area is greater than 0')
     .required('Project Area is required'),
-  // projectImages: yup
-  //   .mixed()
-  //   .test('fileType', 'Unsupported File Format', (value) => {
-  //     if (!value) return false;
-  //     const files = Array.isArray(value) ? value : [value];
-  //     return files.every((file) =>
-  //       ['image/jpeg', 'image/png'].includes(file.type)
-  //     );
-  //   })
-  //   .test('fileSize', 'File Size is too large', (value) => {
-  //     if (!value) return false;
-  //     const files = Array.isArray(value) ? value : [value];
-  //     return files.every((file) => file.size <= 2 * 1024 * 1024); // 2MB
-  //   })
-  //   .required('Project Images is required'),
+  projectImages: yup
+    .array()
+    .of(
+      yup.object().shape({
+        file: yup.mixed().required('File is required'),
+        id: yup.string().required('ID is required'),
+      })
+    )
+    .min(1, 'At least one project image is required')
+    .required('Project Images is required'),
 });
 
 export default projectSchema;
