@@ -7,7 +7,7 @@ const RequiresUnAuth = ({ children }: { children: ReactNode }) => {
   const { isAuthenticated } = useSelector(getAuth);
 
   const location = useLocation();
-  if (isAuthenticated && location.pathname == '/login') {
+  if (isAuthenticated && location.pathname.includes('/login')) {
     return <Navigate to="/dashboard" />;
   }
 

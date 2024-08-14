@@ -8,9 +8,9 @@ const RequiresAuth = ({ children }: { children: ReactNode }) => {
   const location = useLocation();
 
   /* Not Logged In */
-  if (!isAuthenticated && location.pathname !== '/login') {
+  if (!isAuthenticated && location.pathname.includes('/dashboard')) {
     return <Navigate to="/" />;
-  } else if (isAuthenticated && location.pathname !== '/login') {
+  } else if (isAuthenticated && location.pathname.includes('/login')) {
     return <Navigate to="/dashboard" />;
   }
 

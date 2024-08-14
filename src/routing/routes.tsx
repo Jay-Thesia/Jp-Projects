@@ -18,19 +18,7 @@ const AdminDashboard = React.lazy(() => import('pages/admin/dashboard'));
 const AdminProjects = React.lazy(() => import('pages/admin/projects'));
 
 /** PRIVATE ROUTES */
-export const privateRoutes: Array<Route> = [];
-
-/** PUBLIC ROUTES */
-export const publicRoutes: Array<Route> = [
-  { key: 'login_route', path: '/login', title: 'Login', component: <Login /> },
-
-  {
-    key: 'home_route',
-    path: '/',
-    title: 'Home',
-    component: <Home />,
-  },
-  // FIXME: I am private route
+export const privateRoutes: Array<Route> = [
   {
     key: 'admin_route',
     path: '/dashboard/projects',
@@ -43,4 +31,29 @@ export const publicRoutes: Array<Route> = [
     title: 'Admin dashboard',
     component: <AdminDashboard />,
   },
+];
+
+/** PUBLIC ROUTES */
+export const publicRoutes: Array<Route> = [
+  { key: 'login_route', path: '/login', title: 'Login', component: <Login /> },
+
+  {
+    key: 'home_route',
+    path: '/',
+    title: 'Home',
+    component: <Home />,
+  },
+  // FIXME: I am private route
+  // {
+  //   key: 'admin_route',
+  //   path: '/dashboard/projects',
+  //   title: 'Admin Projects',
+  //   component: <AdminProjects />,
+  // },
+  // {
+  //   key: 'admin_route',
+  //   path: '/dashboard',
+  //   title: 'Admin dashboard',
+  //   component: <AdminDashboard />,
+  // },
 ];

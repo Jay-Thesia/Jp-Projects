@@ -13,7 +13,10 @@ const Footer = () => {
                 jpproject.jitendr@gmail.com
               </a>
               <a href="tel:+919227225221">+91 922 722 5221</a>
-              <li>61-A, Elm street, Gujarat, India.</li>
+              <li>
+                City Lights, Center Point, Near, Panchvati Cir, Panchavati
+                Society, Gulbai Tekra, Ahmedabad, Gujarat 380009
+              </li>
             </ul>
           </div>
           <div className="block xl:py-16 col-span-full min-[500px]:col-span-6 md:col-span-4 xl:col-span-6 text-center">
