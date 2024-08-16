@@ -16,6 +16,8 @@ export interface ProjectInterface {
   projectConstructionArea: number;
   projectImages: any | File | File[]; //FIXME: any remove
   _id?: string;
+  projectStartDate?: string;
+  projectEndDate?: string;
   [key: string]: unknown;
 }
 

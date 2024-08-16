@@ -6,15 +6,15 @@ import Certificates from 'pages/certificates';
 import ContactUs from 'pages/contactUs';
 import Projects from 'pages/ourProjects';
 import OurServices from 'pages/ourServices';
-import Team from 'pages/outTeam';
+import Team from 'pages/ourTeam';
 import Testimonial from 'pages/testimonial';
 
 const Home = () => {
   // "./images/black-office.jpg",
   const slides = [
-    './images/carousel/class-meeting-room.jpg',
-    './images/carousel/empty-desk.jpg',
-    './images/carousel/blue-Sofa.jpg',
+    '/images/carousel/class-meeting-room.jpg',
+    '/images/carousel/empty-desk.jpg',
+    '/images/carousel/blue-Sofa.jpg',
   ];
 
   return (
@@ -24,19 +24,7 @@ const Home = () => {
       </div>
 
       <div className="relative md-h-screen sm-h-10">
-        <Carousel autoSlide={true}>
-          {[
-            ...slides.map((s, index) => (
-              <img
-                src={s}
-                className="object-fill h-full w-full rounded-md"
-                alt={s}
-                key={index}
-              />
-            )),
-            //   <video src={vid} autoPlay muted loop />,
-          ]}
-        </Carousel>
+        <Carousel autoSlide={true}>{slides}</Carousel>
       </div>
 
       <div>

@@ -1,3 +1,5 @@
+import Career from 'pages/career';
+import SinglePage from 'pages/ourProjects/components/SinglePage';
 import React from 'react';
 
 export interface Route {
@@ -42,6 +44,18 @@ export const publicRoutes: Array<Route> = [
     path: '/',
     title: 'Home',
     component: <Home />,
+  },
+  {
+    key: 'single_project_route',
+    path: '/project/:projectId',
+    title: 'Single Project',
+    component: <SinglePage />,
+  },
+  {
+    key: 'career_route',
+    path: '/career',
+    title: 'Jobs',
+    component: <Career />,
   },
   // FIXME: I am private route
   // {

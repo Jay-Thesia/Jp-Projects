@@ -20,12 +20,12 @@ const Header = ({
         >
           <div className="flex lg:flex-1 p-1.5">
             {/* className="-m-1.5 p-1.5" */}
-            <Link to="#">
+            <Link to="/">
               <span className="sr-only">JP Projects</span>
               <img
                 className="w-7 h-7 lg:w-8 lg:h-8 scale-[2.9]"
-                src="./images/logo/JpLogo.png"
-                alt=""
+                src="/images/logo/JpLogo.png"
+                alt="site-logo"
               />
             </Link>
           </div>
@@ -84,8 +84,8 @@ const Header = ({
               <span className="sr-only">JP Projects</span>
               <img
                 className="w-7 h-7 lg:w-8 lg:h-8 scale-[2.9]"
-                src="./images/logo/JpLogo.png"
-                alt=""
+                src="/images/logo/JpLogo.png"
+                alt="site-logo"
               />
             </Link>
           </div>
@@ -113,34 +113,30 @@ const Header = ({
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12 text-white">
-            <HashLink
-              smooth
-              to="/"
-              className="text-sm font-semibold leading-6 "
-            >
+            <Link to="/" className="text-sm font-semibold leading-6 ">
               Home
-            </HashLink>
+            </Link>
 
-            <HashLink smooth to="#projects" className="text-sm font-semibold ">
+            <HashLink smooth to="/#projects" className="text-sm font-semibold ">
               Projects
             </HashLink>
             <HashLink
               smooth
-              to="#clients"
+              to="/#clients"
               className="text-sm font-semibold leading-6 "
             >
               Clients
             </HashLink>
             <HashLink
               smooth
-              to="#aboutUs"
+              to="/#aboutUs"
               className="text-sm font-semibold leading-6 "
             >
               About us
             </HashLink>
             <HashLink
               smooth
-              to="#contactUs"
+              to="/#contactUs"
               className="text-sm font-semibold leading-6 "
             >
               Contact us
@@ -162,6 +158,7 @@ const Header = ({
       )}
       {/* <!-- Mobile menu, show/hide based on menu open state. --> */}
       {mobileMenuOpen &&
+        // if admin view show less item
         (isAdminView ? (
           <div className="lg:hidden" role="dialog" aria-modal="true">
             {/* <!-- Background backdrop, show/hide based on slide-over state. --> */}
@@ -172,8 +169,9 @@ const Header = ({
                   <span className="sr-only">JP projects</span>
                   <img
                     className="w-7 h-7 lg:w-8 lg:h-8 scale-[2.9]"
-                    src="./images/logo/JpLogo.png"
-                    alt=""
+                    src="/images/logo/JpLogo.png"
+                    alt="site-logo"
+                    onClick={() => setMobileMenuOpen(false)}
                   />
                 </Link>
                 <button
@@ -212,12 +210,14 @@ const Header = ({
                     <Link
                       to="/dashboard/projects"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-900"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
                       Projects
                     </Link>
                     <Link
                       to="/dashboard/clients"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-900"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
                       Clients
                     </Link>
@@ -225,6 +225,7 @@ const Header = ({
                     <Link
                       to="/dashboard/career"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-900"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
                       Career
                     </Link>
@@ -243,8 +244,9 @@ const Header = ({
                   <span className="sr-only">JP projects</span>
                   <img
                     className="w-7 h-7 lg:w-8 lg:h-8 scale-[2.9]"
-                    src="./images/logo/JpLogo.png"
-                    alt=""
+                    src="/images/logo/JpLogo.png"
+                    alt="site-logo"
+                    onClick={() => setMobileMenuOpen(false)}
                   />
                 </Link>
                 <button
@@ -272,19 +274,19 @@ const Header = ({
               <div className="mt-6 flow-root">
                 <div className="-my-6 divide-y ">
                   <div className="space-y-2 py-6">
-                    <HashLink
-                      smooth
-                      to="#"
+                    <Link
+                      to="/"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-900"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Home
-                    </HashLink>
+                    </Link>
 
                     <HashLink
                       smooth
                       to="#projects"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-900"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
                       Projects
                     </HashLink>
@@ -292,6 +294,7 @@ const Header = ({
                       smooth
                       to="#clients"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-900"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
                       Clients
                     </HashLink>
@@ -299,6 +302,7 @@ const Header = ({
                       smooth
                       to="#aboutUs"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-900"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
                       About us
                     </HashLink>
@@ -306,12 +310,14 @@ const Header = ({
                       smooth
                       to="#contactUs"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-900"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
                       Contact us
                     </HashLink>
                     <HashLink
                       to="/career"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-900"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
                       Career
                     </HashLink>
@@ -320,6 +326,7 @@ const Header = ({
                     <Link
                       to="/login"
                       className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-900"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
                       Log in
                     </Link>
