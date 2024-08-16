@@ -1,12 +1,13 @@
-import React, { Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
-import { privateRoutes, publicRoutes } from "./routes";
-import RequiresUnAuth from "../pages/auth/guard/RequireUnAuth";
-import RequiresAuth from "../pages/auth/guard/RequireAuth";
-import SiteLoader from "../components/comman/loader/SiteLoader";
-import Home from "pages/home";
+import React, { Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { privateRoutes, publicRoutes } from './routes';
+import RequiresUnAuth from '../pages/auth/guard/RequireUnAuth';
+import RequiresAuth from '../pages/auth/guard/RequireAuth';
+import SiteLoader from '../components/comman/loader/SiteLoader';
+import Home from 'pages/home';
+import CanonicalTag from 'components/shared/canonicalTag';
 
-const NotFound = React.lazy(() => import("pages/not-found"));
+const NotFound = React.lazy(() => import('pages/not-found'));
 
 // lazy loading
 
@@ -17,7 +18,10 @@ function CustomRouter() {
         path="/"
         element={
           <Suspense fallback={<SiteLoader />}>
-            <Home />
+            <>
+              <CanonicalTag />
+              <Home />
+            </>
           </Suspense>
         }
       />
@@ -31,7 +35,10 @@ function CustomRouter() {
               element={
                 <RequiresUnAuth>
                   <Suspense fallback={<SiteLoader />}>
-                    {route.component}
+                    <>
+                      <CanonicalTag />
+                      {route.component}
+                    </>
                   </Suspense>
                 </RequiresUnAuth>
               }
@@ -47,7 +54,10 @@ function CustomRouter() {
               element={
                 <RequiresAuth>
                   <Suspense fallback={<SiteLoader />}>
-                    {route.component}
+                    <>
+                      <CanonicalTag />
+                      {route.component}
+                    </>
                   </Suspense>
                 </RequiresAuth>
               }
@@ -59,7 +69,10 @@ function CustomRouter() {
         path="*"
         element={
           <Suspense fallback={<SiteLoader />}>
-            <NotFound />
+            <>
+              <CanonicalTag />
+              <NotFound />
+            </>
           </Suspense>
         }
       />

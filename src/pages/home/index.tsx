@@ -8,6 +8,7 @@ import Projects from 'pages/ourProjects';
 import OurServices from 'pages/ourServices';
 import Team from 'pages/ourTeam';
 import Testimonial from 'pages/testimonial';
+import { useEffect } from 'react';
 
 const Home = () => {
   // "./images/black-office.jpg",
@@ -16,6 +17,18 @@ const Home = () => {
     '/images/carousel/empty-desk.jpg',
     '/images/carousel/blue-Sofa.jpg',
   ];
+
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.rel = 'canonical';
+    link.href = 'https://example.com/en/page';
+
+    document.head.appendChild(link);
+
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
 
   return (
     <>
