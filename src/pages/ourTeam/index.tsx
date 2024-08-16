@@ -18,7 +18,7 @@ const Team = () => {
           <div className="relative">
             <img
               className="w-full md:h-96 lg:h-[31rem]"
-              src="/images/services/servicess1.png"
+              src="/images/team/profile.webp"
               alt="hands with sheet"
             />
           </div>
@@ -34,7 +34,7 @@ const Team = () => {
           <div className="relative">
             <img
               className="w-full md:h-96 lg:h-[31rem]"
-              src="/images/services/servicess6.png"
+              src="/images/team/profile.webp"
               alt="hands with sheet"
             />
           </div>
