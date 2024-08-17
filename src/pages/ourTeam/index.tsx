@@ -13,12 +13,12 @@ const Team = () => {
       </div>
 
       {/* Cards */}
-      <div className="mt-2 md:mt-4 lg:mt-6 grid grid-cols-1 md:grid-cols-2 gap-14">
+      <div className="mt-2 md:mt-4 lg:mt-6 flex justify-center gap-14">
         <div className=" bg-white rounded-lg shadow-2xl p-8">
           <div className="relative">
             <img
               className="w-full md:h-96 lg:h-[31rem]"
-              src="/images/team/profile.webp"
+              src="/images/team/MrJitu.jpg"
               alt="hands with sheet"
             />
           </div>
@@ -27,22 +27,6 @@ const Team = () => {
           </h3>
           <p className=" text-gray-500 text-lg mt-2 text-center">
             Founder & MD{' '}
-          </p>
-        </div>
-
-        <div className=" bg-white rounded-lg shadow-2xl p-8">
-          <div className="relative">
-            <img
-              className="w-full md:h-96 lg:h-[31rem]"
-              src="/images/team/profile.webp"
-              alt="hands with sheet"
-            />
-          </div>
-          <h3 className="text-2xl font-bold text-gray-900 mt-5 text-center ">
-            Paresh Hirapara
-          </h3>
-          <p className=" text-gray-500 text-lg mt-2 text-center">
-            Founder & CEO{' '}
           </p>
         </div>
       </div>

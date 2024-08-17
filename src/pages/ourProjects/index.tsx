@@ -37,65 +37,69 @@ const Projects = () => {
       </div>
 
       {/* Cards */}
-
+      {/* Cards */}
       {projectList?.length > 0 ? (
         projectList?.map((currProject: ProjectInterface, index: number) => (
-          <>
-            {/* TODO: for sm and md screen size make the card smaller */}
+          <div
+            key={currProject._id}
+            className={`mt-8 mx-auto flex flex-col sm:flex-row bg-clip-border rounded-xl bg-white text-gray-700 shadow-2xl max-w-full overflow-hidden ${
+              index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+            } md:flex-row md:max-w-4xl`}
+          >
+            {/* Image Container */}
             <div
-              key={currProject._id}
-              className={` mt-12 relative flex bg-clip-border rounded-xl bg-white text-gray-700 shadow-2xl w-full ${
-                index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-              } lg:max-h-80`}
+              className={`relative w-full sm:w-1/2 md:w-2/5 overflow-hidden text-gray-700 bg-white ${
+                index % 2 === 0
+                  ? 'sm:rounded-t-xl sm:rounded-r-none'
+                  : 'sm:rounded-t-xl sm:rounded-l-none'
+              } bg-clip-border rounded-t-xl md:rounded-none shrink-0`}
             >
-              <div
-                className={`relative w-2/5 m-0 overflow-hidden text-gray-700 bg-white ${
-                  index % 2 === 0 ? 'rounded-r-none' : 'rounded-l-none'
-                } bg-clip-border rounded-xl shrink-0`}
-              >
-                <img
-                  src={currProject.projectImages?.[0]?.secure_url}
-                  alt={currProject.projectName}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <div className={`p-6 ${index % 2 == 0 ? '' : 'flex-grow'}`}>
-                <h6 className="block mb-4 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-gray-700 uppercase">
-                  {currProject.projectType}
-                </h6>
-                <h4 className="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-                  {currProject.projectName}
-                </h4>
-                <p className=" block mb-7 font-sans text-base antialiased font-normal leading-relaxed text-gray-700 max-h-32 overflow-hidden truncate-lines-5">
-                  {currProject.projectDescription}
-                </p>
+              <img
+                src={currProject.projectImages?.[0]?.secure_url}
+                alt={currProject.projectName}
+                className="object-cover w-full h-64 sm:h-48 md:h-72 lg:h-80"
+              />
+            </div>
 
-                <div className="flex justify-center">
-                  <Link
-                    to={`/project/${currProject._id}`}
-                    className="flex items-center gap-2 px-2 lg:px-4  py-2  font-bold text-center text-secondary rounded-full hover:bg-gray-700   bg-primary text-sm lg:text-xl"
+            {/* Content Container */}
+            <div
+              className={`p-4 sm:p-6 w-full ${
+                index % 2 === 0 ? '' : 'md:flex-grow'
+              }`}
+            >
+              <h6 className="block mb-2 md:mb-4 font-sans text-sm md:text-base font-semibold leading-relaxed tracking-normal text-gray-700 uppercase">
+                {currProject.projectType}
+              </h6>
+              <h4 className="block mb-2 font-sans text-xl md:text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900">
+                {currProject.projectName}
+              </h4>
+              <p className="block mb-5 md:mb-7 font-sans text-sm md:text-base font-normal leading-relaxed text-gray-700 max-h-32 overflow-hidden truncate-lines-5">
+                {currProject.projectDescription}
+              </p>
+              <div className="flex justify-center ">
+                <Link
+                  to={`/project/${currProject._id}`}
+                  className="flex items-center gap-2 px-2 md:px-4 py-2 font-bold text-center text-secondary rounded-full hover:bg-gray-700 bg-primary text-sm md:text-xl"
+                >
+                  Know More
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="w-4 h-4"
                   >
-                    {' '}
-                    Know More
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      className="w-4 h-4"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                      ></path>
-                    </svg>
-                  </Link>
-                </div>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                    ></path>
+                  </svg>
+                </Link>
               </div>
             </div>
-          </>
+          </div>
         ))
       ) : (
         <SiteLoader />
