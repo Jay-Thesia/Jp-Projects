@@ -62,6 +62,8 @@ const Button = (props: ButtonProps) => {
       ? 'border border-grayNew bg-transparent hover:bg-grayNew text-grayNew hover:text-white'
       : variant === 'blank'
       ? 'bg-transparent text-grayNew hover:text-black'
+      : variant == 'danger'
+      ? 'bg-red-500 hover:bg-secondary text-white hover:text-black '
       : 'bg-themeColor text-grayNew'
   }
   transition-all duration-300 rounded-8 p-5 ${className ? className : ''} ${

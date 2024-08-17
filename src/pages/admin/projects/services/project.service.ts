@@ -1,5 +1,10 @@
 import { AxiosRequestConfig } from 'axios';
-import { useAxiosGet, useAxiosPatch, useAxiosPost } from 'hooks/useAxios';
+import {
+  useAxiosDelete,
+  useAxiosGet,
+  useAxiosPatch,
+  useAxiosPost,
+} from 'hooks/useAxios';
 
 const PROJECT_API_BASE_PATH = '/projects';
 
@@ -47,4 +52,20 @@ export const useEditProjectAPI = () => {
   };
 
   return { editProjectAPI, isLoading, isError, isSuccess };
+};
+
+//  ** patch delete Logged User Details **
+export const useDeleteProjectAPI = () => {
+  // ** custom Hooks **
+  const [callApi, { isLoading, isError, isSuccess }] = useAxiosDelete();
+
+  const deleteProjectAPI = async (
+    data: object,
+    config: AxiosRequestConfig<object> = {},
+    id: string
+  ) => {
+    return callApi(`${PROJECT_API_BASE_PATH}/delete/${id}`, config);
+  };
+
+  return { deleteProjectAPI, isLoading, isError, isSuccess };
 };

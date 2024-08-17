@@ -57,7 +57,7 @@ const Projects = () => {
               <img
                 src={currProject.projectImages?.[0]?.secure_url}
                 alt={currProject.projectName}
-                className="object-cover w-full h-64 sm:h-48 md:h-72 lg:h-80"
+                className="object-cover w-full h-68 sm:h-48 md:h-72 lg:h-80"
               />
             </div>
 

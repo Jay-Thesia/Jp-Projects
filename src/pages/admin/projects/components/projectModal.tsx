@@ -20,9 +20,18 @@ interface ProjectFormInterface {
   onSave?: () => void;
   onClose: Dispatch<React.SetStateAction<boolean>>;
   isEdit?: boolean;
+  setSelectedProjectData?: React.Dispatch<
+    React.SetStateAction<ProjectInterface>
+  >;
 }
 const ProjectModal = (props: ProjectFormInterface) => {
-  const { projectData, onClose, onSave, isEdit = false } = props;
+  const {
+    projectData,
+    onClose,
+    onSave,
+    isEdit = false,
+    setSelectedProjectData,
+  } = props;
 
   const [selectedImages, setSelectedImages] = useState<any[]>([]);
 
@@ -118,6 +127,8 @@ const ProjectModal = (props: ProjectFormInterface) => {
 
       if (data) {
         onClose(false);
+        setSelectedProjectData &&
+          setSelectedProjectData((prev) => ({ ...prev, ...value }));
       }
       return true;
     } catch (error: unknown) {
@@ -144,6 +155,7 @@ const ProjectModal = (props: ProjectFormInterface) => {
           readFileAsBase64(image.file)
         )
       );
+
       // Convert the array to a JSON string
       const base64ImagesJson = JSON.stringify(base64Images);
       formData.append('projectImages', base64ImagesJson);

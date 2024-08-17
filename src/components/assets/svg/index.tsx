@@ -162,9 +162,17 @@ export const EditIcon = ({
   );
 };
 
-export const DeleteIcon = ({ className }: { className?: string }) => {
+export const DeleteIcon = ({
+  className,
+  onClick,
+}: {
+  className?: string;
+  onClick?: any;
+}) => {
   return (
     <svg
+      className={className}
+      onClick={onClick}
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"

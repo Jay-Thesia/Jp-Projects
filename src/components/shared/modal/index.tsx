@@ -46,7 +46,7 @@ const Modal = ({
           >
             <div className="rounded-[20px] p-8 relative flex flex-col w-full bg-white">
               <div className="relative flex items-center mb-6">
-                <h2 className="font-bold text-3xl"> {title}</h2>
+                <h2 className="font-bold text-2xl lg:text-3xl"> {title}</h2>
                 <button
                   type="button"
                   className="absolute text-2xl right-0 text-black hover:text-ocean opacity-80 hover:opacity-100 transition-all"
