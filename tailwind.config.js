@@ -36,8 +36,7 @@ module.exports = {
           'stickSlide 0.5s cubic-bezier(0.42, 0, 0, 1.14) 2s 1 alternate forwards',
         stickSlideLeft:
           'stickSlideLeft 0.5s cubic-bezier(0.42, 0, 0, 1.14) 2s 1 alternate forwards',
-        stickImg: 'stickImg 0.6s linear',
-        stickText: 'stickText 0.6s linear',
+        shimmer: 'shimmer 1.5s infinite',
       },
       keyframes: {
         stickSlide: {
@@ -60,28 +59,9 @@ module.exports = {
             transform: 'translateX(-100%)',
           },
         },
-        stickImg: {
-          '0%': {
-            top: '-40px',
-            opacity: '0',
-          },
-          '100%': {
-            top: '0',
-            opacity: '1',
-          },
-        },
-        stickText: {
-          '0%': {
-            bottom: '-40px',
-            opacity: '0',
-          },
-          '100%': {
-            bottom: '0',
-            opacity: '1',
-          },
-        },
-        maxHeight: {
-          12.5: '12.5rem',
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
         },
       },
     },
