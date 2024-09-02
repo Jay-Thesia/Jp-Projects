@@ -20,6 +20,7 @@ const Team = () => {
               className="w-full md:h-96 lg:h-[31rem]"
               src="/images/team/MrJitu.jpg"
               alt="hands with sheet"
+              loading="lazy"
             />
           </div>
           <h3 className="text-2xl font-bold text-gray-900 mt-5 text-center ">

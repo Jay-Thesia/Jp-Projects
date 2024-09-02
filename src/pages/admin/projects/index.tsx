@@ -142,7 +142,7 @@ const AdminProjects = () => {
         }));
       }
     } catch (error) {
-      console.log(`Error in deleting project ::: ${error}`);
+      console.error(`Error in deleting project ::: ${error}`);
     }
   };
 
@@ -154,7 +154,6 @@ const AdminProjects = () => {
         console.error(`Error when fetching the projects`);
         return;
       }
-      console.log('esofjsoi');
 
       setProjectData(projectGet);
     })();

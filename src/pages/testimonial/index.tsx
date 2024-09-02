@@ -109,6 +109,7 @@ const Testimonial = () => {
                     className="h-10 w-10"
                     src={currTestimonial.personImagePath}
                     alt="avatar"
+                    loading="lazy"
                   />
                   <div className="block">
                     <h5 className="text-gray-900 font-medium transition-all duration-500  mb-1">

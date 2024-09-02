@@ -26,18 +26,18 @@ const OurServices = () => {
           <h3 className="text-xl font-bold text-gray-900 mt-4 ">
             Engineering techniques & implementation
           </h3>
-          <p className="overflow-hidden h-36 text-gray-500 text-sm mt-2">
+          <p className="overflow-hidden h-40 text-gray-500 text-sm mt-2">
             The world of construction rests on the strong shoulders of
             engineers. From soil analysis to material selection, their expertise
             is the invisible foundation of safe, enduring, and sustainable
             structures. Our work lifts the veil on these fascinating techniques.{' '}
           </p>
 
-          <div className="flex justify-center mt-4">
+          {/* <div className="flex justify-center mt-4">
             <button className="bg-primary text-secondary py-2 px-5 rounded-full font-bold hover:bg-gray-600">
               Read more
             </button>
-          </div>
+          </div> */}
         </div>
 
         <div className="bg-white rounded-lg shadow-2xl p-8">
@@ -52,7 +52,6 @@ const OurServices = () => {
           <h3 className="text-xl font-bold text-gray-900 mt-4">
             Pre-construction services
           </h3>
-
           <p className="overflow-hidden h-40 text-gray-500 text-sm mt-2">
             Before breaking ground, we ensure a smooth build with our
             pre-construction services. We'll work with you to refine your
@@ -61,11 +60,11 @@ const OurServices = () => {
             planning lays the foundation for a successful.
           </p>
 
-          <div className="flex justify-center mt-4">
+          {/* <div className="flex justify-center mt-4">
             <button className="bg-primary text-secondary py-2 px-5 rounded-full font-bold hover:bg-gray-600">
               Read more
             </button>
-          </div>
+          </div> */}
         </div>
 
         <div className="bg-white rounded-lg shadow-2xl p-8 ">
@@ -88,11 +87,11 @@ const OurServices = () => {
             ensuring every note is perfectly placed for a harmonious creation.{' '}
           </p>
 
-          <div className="flex justify-center mt-4">
+          {/* <div className="flex justify-center mt-4">
             <button className="bg-primary text-secondary py-2 px-5 rounded-full font-bold hover:bg-gray-600">
               Read more
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

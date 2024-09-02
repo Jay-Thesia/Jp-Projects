@@ -39,6 +39,7 @@ const Carousel = (props: CarouselProps) => {
           {slides.map((slide: string, index: number) => (
             <div key={index} className="w-full flex-shrink-0">
               <img
+                loading="lazy"
                 key={slide?.split('/')[2]}
                 src={slide}
                 alt={slide?.split('/')[2]}

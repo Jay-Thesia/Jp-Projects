@@ -1,13 +1,13 @@
 const Skeleton = ({ width, height, className }: any) => {
   return (
     <div
-      className={`border border-black shadow rounded-md p-4 mx-auto ${className}`}
+      className={`absolute border border-black shadow rounded-md p-4 mx-auto ${className}`}
       style={{ backgroundColor: '#f0f0f0' }} // Customize the background color here
     >
-      <div className="relative animate-pulse flex items-center justify-center h-full">
+      <div className="relative animate-pulse flex items-center justify-center h-68">
         {/* Centered SVG */}
         <svg
-          className="w-10 h-10 text-gray-200 dark:text-gray-600"
+          className="w-10 h-36 sm:h-56 md:h-80 lg:h-80 text-gray-200 dark:text-gray-600"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"

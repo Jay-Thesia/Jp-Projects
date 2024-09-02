@@ -17,22 +17,24 @@ const ImageWithSkeleton = ({ src, alt, width, height, className }: any) => {
 
   return (
     <>
-      {isLoading && (
-        <Skeleton width={width} height={height} className={className} />
-      )}
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        className={className}
-        // style={{
-        //   display: isLoading ? 'none' : 'block',
-        // }}
-        onLoad={handleImageLoad}
-        onError={handleError}
-      />
+      <div className="relative">
+        {isLoading && (
+          <Skeleton width={width} height={height} className={className} />
+        )}
 
-      {hasError && <div>Error loading image</div>}
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          className={className}
+          // style={{
+          //   display: isLoading ? 'none' : 'block',
+          // }}
+          onLoad={handleImageLoad}
+          onError={handleError}
+        />
+        {hasError && <div>Error loading image</div>}
+      </div>
     </>
   );
 };
