@@ -6,7 +6,6 @@ const ImageWithSkeleton = ({ src, alt, width, height, className }: any) => {
   const [hasError, setHasError] = useState(false);
 
   const handleImageLoad = () => {
-    console.log('Image loaded');
     setIsLoading(false);
   };
 

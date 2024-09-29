@@ -1,4 +1,5 @@
 import SiteLoader from 'components/comman/loader/SiteLoader';
+import Shimmer from 'components/shared/skeleton/commonShimmerEffect';
 import ImageWithSkeleton from 'components/shared/skeleton/ImageWithSkeleton';
 import Skeleton from 'components/shared/skeleton/skeleton';
 import { useGetProjectAPI } from 'pages/admin/projects/services/project.service';
@@ -39,68 +40,106 @@ const Projects = () => {
       </div>
 
       {/* Cards */}
-      {projectList?.map((currProject: ProjectInterface, index: number) => (
-        <div
-          key={currProject._id}
-          className={`mt-8 mx-auto flex flex-col sm:flex-row bg-clip-border rounded-xl bg-white text-gray-700 shadow-2xl max-w-full overflow-hidden ${
-            index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-          } md:flex-row md:max-w-4xl`}
-        >
-          {/* Image Container */}
-          <div
-            className={`relative w-full sm:w-1/2 md:w-2/5 overflow-hidden text-gray-700 bg-white ${
-              index % 2 === 0
-                ? 'sm:rounded-t-xl sm:rounded-r-none'
-                : 'sm:rounded-t-xl sm:rounded-l-none'
-            } bg-clip-border rounded-t-xl md:rounded-none shrink-0`}
-          >
-            <ImageWithSkeleton
-              src={currProject.projectImages?.[0]?.secure_url}
-              alt={currProject.projectName}
-              className="object-cover w-full h-64 sm:h-72 md:h-80 lg:h-80"
-            />
-          </div>
-
-          {/* Content Container */}
-          <div
-            className={`p-4 sm:p-6 w-full ${
-              index % 2 === 0 ? '' : 'md:flex-grow'
-            }`}
-          >
-            <h6 className="block mb-2 md:mb-4 font-sans text-sm md:text-base font-semibold leading-relaxed tracking-normal text-gray-700 uppercase">
-              {currProject.projectType}
-            </h6>
-            <h4 className="block mb-2 font-sans text-xl md:text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900">
-              {currProject.projectName}
-            </h4>
-            <p className="block mb-5 md:mb-7 font-sans text-sm md:text-base font-normal leading-relaxed text-gray-700 max-h-32 overflow-hidden truncate-lines-5">
-              {currProject.projectDescription}
-            </p>
-            <div className="flex justify-center ">
-              <Link
-                to={`/project/${currProject._id}`}
-                className="flex items-center gap-2 px-2 md:px-4 py-2 font-bold text-center text-secondary rounded-full hover:bg-gray-700 bg-primary text-sm md:text-xl"
+      {isLoading ? (
+        <div className="mt-8 mx-auto max-w-4xl">
+          {[...Array(3)].map((_, i) => (
+            <div
+              key={i}
+              className={`flex flex-col sm:flex-row bg-clip-border rounded-xl bg-white text-gray-700 shadow-2xl max-w-full overflow-hidden mt-8  ${
+                i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+              }`}
+            >
+              {/* Shimmer for image container */}
+              <div
+                className={`relative w-full sm:w-1/2 md:w-2/5 overflow-hidden bg-white bg-clip-border rounded-t-xl md:rounded-none shrink-0 `}
               >
-                Know More
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className="w-4 h-4"
+                <Shimmer className="h-64 sm:h-72 md:h-80 lg:h-80" />
+              </div>
+
+              {/* Shimmer for content container */}
+              <div
+                className={`p-4 sm:p-6 w-full ${
+                  i % 2 === 0 ? '' : 'md:flex-grow'
+                }`}
+              >
+                <div className="h-full sm:w-[300px] md:w-[400px] lg:w-[500px]">
+                  <Shimmer className="w-1/3 h-4 mb-4" />
+                  <Shimmer className="w-2/3 h-6 mb-4" />
+                  <Shimmer className="w-full h-16 mb-5" />
+                  <Shimmer className="w-32 h-10 mt-5 rounded-full" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : projectList && projectList.length > 0 ? (
+        // Show projects if data is available
+        projectList.map((currProject: ProjectInterface, index: number) => (
+          <div
+            key={currProject._id}
+            className={`mt-8 mx-auto flex flex-col sm:flex-row bg-clip-border rounded-xl bg-white text-gray-700 shadow-2xl max-w-full overflow-hidden ${
+              index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+            } md:flex-row md:max-w-4xl`}
+          >
+            {/* Image Container */}
+            <div
+              className={`relative w-full sm:w-1/2 md:w-2/5 overflow-hidden text-gray-700 bg-white ${
+                index % 2 === 0
+                  ? 'sm:rounded-t-xl sm:rounded-r-none'
+                  : 'sm:rounded-t-xl sm:rounded-l-none'
+              } bg-clip-border rounded-t-xl md:rounded-none shrink-0`}
+            >
+              <ImageWithSkeleton
+                src={currProject.projectImages?.[0]?.secure_url}
+                alt={currProject.projectName}
+                className="object-cover w-full h-64 sm:h-72 md:h-80 lg:h-80"
+              />
+            </div>
+
+            {/* Content Container */}
+            <div
+              className={`p-4 sm:p-6 w-full ${
+                index % 2 === 0 ? '' : 'md:flex-grow'
+              }`}
+            >
+              <h6 className="block mb-2 md:mb-4 font-sans text-sm md:text-base font-semibold leading-relaxed tracking-normal text-gray-700 uppercase">
+                {currProject.projectType}
+              </h6>
+              <h4 className="block mb-2 font-sans text-xl md:text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900">
+                {currProject.projectName}
+              </h4>
+              <p className="block mb-5 md:mb-7 font-sans text-sm md:text-base font-normal leading-relaxed text-gray-700 max-h-32 overflow-hidden truncate-lines-5">
+                {currProject.projectDescription}
+              </p>
+              <div className="flex justify-center ">
+                <Link
+                  to={`/project/${currProject._id}`}
+                  className="flex items-center gap-2 px-2 md:px-4 py-2 font-bold text-center text-secondary rounded-full hover:bg-gray-700 bg-primary text-sm md:text-xl"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                  ></path>
-                </svg>
-              </Link>
+                  Know More
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="w-4 h-4"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                    ></path>
+                  </svg>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      ) : (
+        // Show this message if no projects are found
+        <div className="text-center text-gray-700 mt-8">No Projects Added</div>
+      )}
     </div>
   );
 };

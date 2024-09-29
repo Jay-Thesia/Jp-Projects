@@ -17,5 +17,5 @@
     "baseUrl": "src",
     "jsx": "react-jsx"
   },
-  "include": ["src", "src/**/*.css"]
+  "include": ["src", "src/**/*.css", ".env.*"]
 }
