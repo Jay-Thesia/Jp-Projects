@@ -1,4 +1,3 @@
-import React from 'react';
 import './mystyle.css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -12,33 +11,33 @@ const Testimonial = () => {
   const testimonials = [
     {
       id: 1,
-      stars: 4.9,
+      stars: 5.0,
       testimonial:
-        'Pagedone has made it possible for me to stay on top of my portfolio and make informed decisions quickly and easily.',
-      personImagePath: 'https://pagedone.io/asset/uploads/1696229969.png',
-      name: 'Jane D',
-      designation: 'CEO',
-      companyName: 'Fortune Tech',
+        'We hired JP Projects to build our IT office space, and they delivered beyond expectations. The design was innovative, and the execution was flawless. The project was completed on time, and the team was highly professional throughout.',
+      personImagePath: '/images/testimonials/Einfochips.jpeg',
+      name: 'Sudhir Naik',
+      designation: 'Founder',
+      companyName: 'Einfochips',
     },
     {
       id: 2,
       stars: 4.9,
       testimonial:
-        'Thanks to pagedone, I feel more informed and confident about my investment decisions than ever before.',
+        'JP Projects transformed our workspace into a modern, functional, and aesthetically pleasing environment. Their attention to detail and commitment to quality were evident at every stage. I would definitely recommend them to anyone looking for reliable construction services.',
       personImagePath: 'https://pagedone.io/asset/uploads/1696229994.png',
-      name: 'Harsh P.',
-      designation: 'Product Designer',
+      name: 'Nishant Dave',
+      designation: 'CEO',
       companyName: 'Vagarro Technology',
     },
     {
       id: 3,
       stars: 4.9,
       testimonial:
-        'The customer service team at pagedone went above and beyond to help me resolve a billing issue. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam nobis repellat dolorem eligendi delectus asperiores, commodi, ipsum numquam aliquam, animi mollitia praesentium? Explicabo quo veniam fuga doloribus. Dolorem, quas officia.',
+        'The team at JP Projects was fantastic to work with. They understood our requirements perfectly and provided creative solutions that fit our budget. The result was a beautifully designed IT office that our team loves working in.',
       personImagePath: 'https://pagedone.io/asset/uploads/1696230027.png',
-      name: 'Alex K.',
-      designation: 'Design Lead',
-      companyName: 'Jay Technologies',
+      name: 'Rajnikant Joshi',
+      designation: 'Founder & CEO',
+      companyName: '9 Series',
     },
   ];
   return (
@@ -100,13 +99,13 @@ const Testimonial = () => {
                       {currTestimonial.stars}
                     </span>
                   </div>
-                  <p className="text-base text-gray-600 leading-6  transition-all duration-500 pb-8 group-hover:text-gray-800 slide_active:text-gray-800 text-ellipsis overflow-hidden max-h-32 min-h-32">
+                  <p className="text-base text-gray-600 leading-6  transition-all duration-500 pb-8 group-hover:text-gray-800 slide_active:text-gray-800 text-ellipsis overflow-hidden min-h-56">
                     {currTestimonial.testimonial}
                   </p>
                 </div>
                 <div className="flex items-center gap-5 border-t border-solid border-gray-200 pt-5">
                   <img
-                    className="h-10 w-10"
+                    className="h-10 w-10 rounded-full"
                     src={currTestimonial.personImagePath}
                     alt="avatar"
                     loading="lazy"
@@ -115,10 +114,10 @@ const Testimonial = () => {
                     <h5 className="text-gray-900 font-medium transition-all duration-500  mb-1">
                       {currTestimonial.name}
                     </h5>
-                    <p className="text-sm text-gray-500 leading-none">
+                    <p className="text-sm text-gray-500 leading-none -mb-2">
                       {currTestimonial.designation}{' '}
                     </p>
-                    <span className="text-sm text-gray-500 leading-none">
+                    <span className="text-sm text-gray-500 leading-none ">
                       {currTestimonial.companyName}{' '}
                     </span>
                   </div>

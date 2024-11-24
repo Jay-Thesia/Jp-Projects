@@ -239,7 +239,7 @@ const Footer = () => {
         <div className="flex items-center justify-center">
           <span className="text-sm text-gray-800 text-center ">
             Copyright@2024 All Right Reserved by{' '}
-            <a href="https://pagedone.io/">J.P. Projects</a>
+            <a href="https://jpatelprojects.netlify.app/">J.P. Projects</a>
           </span>
         </div>
       </div>
