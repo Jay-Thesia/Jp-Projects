@@ -18,20 +18,34 @@ const Home = React.lazy(() => import('pages/home'));
 // Admin
 const AdminDashboard = React.lazy(() => import('pages/admin/dashboard'));
 const AdminProjects = React.lazy(() => import('pages/admin/projects'));
+const AdminClients = React.lazy(() => import('pages/admin/clients'));
+const AdminCareer = React.lazy(() => import('pages/admin/career'));
 
 /** PRIVATE ROUTES */
 export const privateRoutes: Array<Route> = [
   {
-    key: 'admin_route',
+    key: 'admin_projects_route',
     path: '/dashboard/projects',
     title: 'Admin Projects',
     component: <AdminProjects />,
   },
   {
-    key: 'admin_route',
+    key: 'admin_dashboard_route',
     path: '/dashboard',
     title: 'Admin dashboard',
     component: <AdminDashboard />,
+  },
+  {
+    key: 'admin_clients_route',
+    path: '/dashboard/clients',
+    title: 'Admin clients',
+    component: <AdminClients />,
+  },
+  {
+    key: 'admin_career_route',
+    path: '/dashboard/career',
+    title: 'Admin career',
+    component: <AdminCareer />,
   },
 ];
 

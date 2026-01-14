@@ -13,6 +13,7 @@ import { ProjectInterface } from '../types';
 import projectSchema from './validations/project.validation';
 import Input from 'components/comman/input';
 import ProjectModal from './components/projectModal';
+import Header from 'components/shared/header';
 
 const AdminProjects = () => {
   // * * * * * * * * Hooks * * * * *
@@ -160,6 +161,8 @@ const AdminProjects = () => {
   }, [selectedProjectData]);
 
   return (
+    <>
+    <Header isAdminView={true} />
     <div className=" mt-10">
       <div className="mx-10  flex justify-between">
         <div className=" text-2xl">Project Data</div>
@@ -218,6 +221,7 @@ const AdminProjects = () => {
         </Modal>
       )}
     </div>
+    </>
   );
 };
 

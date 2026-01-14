@@ -238,7 +238,7 @@ const Footer = () => {
       <div className="py-4 bg-indigo-50">
         <div className="flex items-center justify-center">
           <span className="text-sm text-gray-800 text-center ">
-            Copyright@2024 All Right Reserved by{' '}
+            Copyright@2026 All Right Reserved by{' '}
             <a href="https://jpatelprojects.netlify.app/">J.P. Projects</a>
           </span>
         </div>
