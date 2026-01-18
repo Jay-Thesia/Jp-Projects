@@ -75,6 +75,7 @@ const Projects = () => {
       ) : projectList && projectList.length > 0 ? (
         // Show projects if data is available
         projectList.map((currProject: ProjectInterface, index: number) => (
+          console.log('currProject', currProject),
           <div
             key={currProject._id}
             className={`mt-8 mx-auto flex flex-col sm:flex-row bg-clip-border rounded-xl bg-white text-gray-700 shadow-2xl max-w-full overflow-hidden ${
@@ -90,7 +91,7 @@ const Projects = () => {
               } bg-clip-border rounded-t-xl md:rounded-none shrink-0`}
             >
               <ImageWithSkeleton
-                src={currProject.projectImages?.[0]?.secure_url}
+                src={currProject.projectImages?.[0]?.url}
                 alt={currProject.projectName}
                 className="object-cover w-full h-64 sm:h-72 md:h-80 lg:h-80"
               />
