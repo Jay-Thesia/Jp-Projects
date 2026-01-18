@@ -75,7 +75,6 @@ const Projects = () => {
       ) : projectList && projectList.length > 0 ? (
         // Show projects if data is available
         projectList.map((currProject: ProjectInterface, index: number) => (
-          console.log('currProject', currProject),
           <div
             key={currProject._id}
             className={`mt-8 mx-auto flex flex-col sm:flex-row bg-clip-border rounded-xl bg-white text-gray-700 shadow-2xl max-w-full overflow-hidden ${
